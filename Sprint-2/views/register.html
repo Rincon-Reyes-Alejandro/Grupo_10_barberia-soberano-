@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soberano Distrito Barber - Registro</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body style="background-color: rgba(0,0,0,0.8);">
+
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <a href="/" class="modal-close" style="text-decoration: none;">&times;</a>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: #9e2a2b; text-transform: uppercase;">— Acceso Privado</span>
+            
+            <h2 style="font-size: 2rem; margin-top: 5px; margin-bottom: 20px; font-weight: normal;">Únete al distrito.</h2>
+
+            <div style="display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid #d1c7bd; padding-bottom: 10px;">
+                <a href="/login" style="color: #666; text-decoration: none; font-size: 0.9rem;">INICIAR SESIÓN</a>
+                <a href="/register" style="color: #1a1a1a; text-decoration: none; font-size: 0.9rem; font-weight: bold; border-bottom: 2px solid #9e2a2b; padding-bottom: 11px;">REGÍSTRATE</a>
+            </div>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="Mínimo 8 caracteres" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirmar Contraseña</label>
+                    <input type="password" placeholder="Repite tu contraseña" required>
+                </div>
+
+                <button type="submit" class="btn-primary" style="margin-top: 10px;">Crear mi cuenta</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

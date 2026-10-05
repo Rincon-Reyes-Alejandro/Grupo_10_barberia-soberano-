@@ -1,0 +1,16 @@
+{
+  "name": "sprint-2",
+  "version": "1.0.0",
+  "description": "El seguimiento de las tareas y el flujo de desarrollo de este sprint se gestiona a través de GitHub Projects:\r - [Enlace a mi Tablero de GitHub Projects](https://github.com/users/Rincon-Reyes-Alejandro/projects/1/views/1)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
