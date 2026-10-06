@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main class="light-section" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="modal-box" style="max-width: 500px; width: 100%; box-shadow: none; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Acceso Privado</span>
+            <h2 style="font-size: 2.2rem; margin: 10px 0 20px 0; font-weight: normal;">Bienvenido de nuevo.</h2>
+            
+            <div style="display: flex; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                <span style="font-weight: bold; border-bottom: 2px solid var(--bg-red); padding-bottom: 11px;">INICIAR SESIÓN</span>
+                <a href="#" style="color: var(--text-muted); text-decoration: none;">REGÍSTRATE</a>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('¡Inicio de sesión exitoso! Accediendo a historial de compras...'); window.location.href='/';">
+                <div class="form-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" placeholder="Mínimo 8 caracteres" required>
+                </div>
+
+                <!-- Opciones adicionales (Recuérdame y recuperar contraseña) -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-dark);">
+                        <input type="checkbox" style="width: auto; margin: 0;"> Recuérdame
+                    </label>
+                    <a href="#" onclick="alert('Se ha enviado un enlace de recuperación a tu correo electrónico.'); return false;" style="color: var(--bg-red); text-decoration: none;">¿Has olvidado tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 5px; justify-content: center;">Entrar</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

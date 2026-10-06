@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <%- include('../partials/header') %>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <span class="hero-subtitle">Barbería de autor · Desde 2018</span>
+        <h1>Tu estilo. <span>Tu distrito.</span></h1>
+        <p>Cortes con carácter, rituales sin prisa y oficio de verdad. Entra como cliente. Sal como soberano.</p>
+        <div>
+            <button class="btn-red" onclick="abrirModal('modalReserva')">Reserva tu cita &rarr;</button>
+        </div>
+        <div class="hero-footer">
+            <span>San Gil · Santander · 684031</span>
+            <span>Mar — Sáb / 10:00 — 20:00</span>
+        </div>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="light-section">
+        <span class="section-tag">El Oficio</span>
+        <div class="section-header-flex">
+            <h2 class="section-title">Servicios <span>sin artificios.</span></h2>
+            <p style="color: var(--text-muted); max-width: 350px;">Menos tendencias pasajeras. Más técnica, criterio y atención al detalle.</p>
+        </div>
+
+        <div class="service-row">
+            <div class="service-info">
+                <h3>01. Corte Soberano</h3>
+                <p>Asesoría, corte a tijera o máquina, lavado y peinado.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">25 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-info">
+                <h3>02. Barba de Distrito</h3>
+                <p>Ritual de toalla caliente, perfilado y aceites esenciales.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">18 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+
+        <div class="service-row" style="border-bottom: 1px solid var(--border-color);">
+            <div class="service-info">
+                <h3>03. Servicio Completo</h3>
+                <p>Corte, barba y acabado premium. El ritual de la casa.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">39 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TIENDA (8 Productos con imágenes y botón Añadir) ================= -->
+    <section id="tienda" class="light-section" style="padding-top: 0;">
+        <span class="section-tag">La Tienda del Distrito</span>
+        <div class="section-header-flex">
+            <h2 class="section-title">El ritual <span>continúa en casa.</span></h2>
+            <p style="color: var(--text-muted); max-width: 350px;">Fórmulas honestas y herramientas elegidas por nuestros barberos. Lo que usamos, ahora también es tuyo.</p>
+        </div>
+
+        <div class="products-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-crema.jpg" alt="Crema de Afeitado" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Crema de Afeitado N·01', 10)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Afeitado</span>
+                <div class="product-name-price">
+                    <h4>Crema de Afeitado N·01</h4>
+                    <span>10 €</span>
+                </div>
+                <p class="product-desc">Espuma densa, deslizamiento suave y aroma a sándalo.</p>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-navaja.jpg" alt="Navaja Distrito" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Navaja Distrito', 32)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Herramientas</span>
+                <div class="product-name-price">
+                    <h4>Navaja Distrito</h4>
+                    <span>32 €</span>
+                </div>
+                <p class="product-desc">Acero inoxidable y mango de madera natural.</p>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-cuchillas.jpg" alt="Cuchillas Clásicas" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cuchillas Clásicas', 9)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Afeitado</span>
+                <div class="product-name-price">
+                    <h4>Cuchillas Clásicas</h4>
+                    <span>9 €</span>
+                </div>
+                <p class="product-desc">Pack de 20 hojas de doble filo y corte preciso.</p>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-gel.jpg" alt="Gel Fijador Mate" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Gel Fijador Mate', 18)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Cabello</span>
+                <div class="product-name-price">
+                    <h4>Gel Fijador Mate</h4>
+                    <span>18 €</span>
+                </div>
+                <p class="product-desc">Fijación media sin residuos ni efecto mojado.</p>
+            </div>
+
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-cera.jpg" alt="Cera Soberana" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cera Soberana', 19)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Cabello</span>
+                <div class="product-name-price">
+                    <h4>Cera Soberana</h4>
+                    <span>19 €</span>
+                </div>
+                <p class="product-desc">Textura flexible, acabado natural y control duradero.</p>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-aceite.jpg" alt="Aceite de Barba" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Aceite de Barba N·03', 22)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Barba</span>
+                <div class="product-name-price">
+                    <h4>Aceite de Barba N·03</h4>
+                    <span>22 €</span>
+                </div>
+                <p class="product-desc">Argán, jojoba y cedro para nutrir sin engrasar.</p>
+            </div>
+
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-balsamo.jpg" alt="Bálsamo After Shave" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Bálsamo After Shave', 21)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Afeitado</span>
+                <div class="product-name-price">
+                    <h4>Bálsamo After Shave</h4>
+                    <span>21 €</span>
+                </div>
+                <p class="product-desc">Calma, hidrata y refresca después del afeitado.</p>
+            </div>
+
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="/images/producto-kit.jpg" alt="Kit Ritual Completo" style="width:100%; height:100%; object-fit:cover;">
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Kit Ritual Completo', 58)">
+                        🛒 Añadir
+                    </button>
+                </div>
+                <span class="product-category">Edición Especial</span>
+                <div class="product-name-price">
+                    <h4>Kit Ritual Completo</h4>
+                    <span>58 €</span>
+                </div>
+                <p class="product-desc">Crema, aceite, cera y peine en estuche de regalo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MANIFESTO ================= -->
+    <section id="manifiesto" class="dark-manifesto">
+        <div class="manifesto-img">
+            <span class="manifesto-img-tag">06 Años en el barrio</span>
+        </div>
+        <div class="manifesto-content">
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase; margin-bottom: 10px; display: block;">— El Manifiesto</span>
+            <h2>No cortamos pelo. <span>Construimos presencia.</span></h2>
+            <p>Somos una barbería de barrio con mentalidad de estudio. Escuchamos, proponemos y trabajamos cada detalle hasta que el corte habla por ti.</p>
+            <span style="font-size: 1.5rem; letter-spacing: 2px;">Soberano</span>
+        </div>
+    </section>
+
+    <!-- ================= CITA DEL CLIENTE ================= -->
+    <section class="red-quote-section">
+        <span style="font-size: 2rem;">“</span>
+        <h2>Por fin una barbería donde entienden lo que pides, pero también saben decirte lo que te queda mejor.</h2>
+        <small>— Marcos G. · Cliente desde 2019</small>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="light-section">
+        <span class="section-tag">Tu Próxima Parada</span>
+        <div class="contact-grid">
+            <div>
+                <h2 class="section-title">Ven al <span>distrito.</span></h2>
+                <div style="margin-top: 40px;">
+                    <button class="btn-red" onclick="abrirModal('modalReserva')">Reservar Ahora &rarr;</button>
+                </div>
+            </div>
+            <div>
+                <div class="contact-info-list">
+                    <div class="contact-item">
+                        <span class="contact-label">Dirección</span>
+                        <div class="contact-val">
+                            Cra 17 #35-46 · C.C. San Gil Plaza<br>Local 322 · San Gil, Colombia · 684031
+                            <div><a href="#">Cómo llegar &rarr;</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Horario</span>
+                        <div class="contact-val">
+                            Martes — Viernes 10:00 — 20:00<br>Sábado 09:30 — 15:00
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Contacto</span>
+                        <div class="contact-val">+57 320 993 4019</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <%- include('../partials/footer') %>
+
+
+    <!-- ================= VENTANAS MODALES ================= -->
+
+    <!-- 1. Modal Reserva -->
+    <div class="modal-overlay" id="modalReserva">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="cerrarModales()">&times;</button>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Reserva tu cita</span>
+            <h3 style="font-size: 2rem; margin: 10px 0 25px 0; font-weight: normal;">Hazte un hueco en el distrito.</h3>
+            <form onsubmit="event.preventDefault(); alert('¡Cita solicitada con éxito!'); cerrarModales();">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" placeholder="+57 300 000 0000" required>
+                </div>
+                <div class="form-group">
+                    <label>Servicio</label>
+                    <select required>
+                        <option value="" disabled selected>Selecciona un servicio</option>
+                        <option>01. Corte Soberano - 25 €</option>
+                        <option>02. Barba de Distrito - 18 €</option>
+                        <option>03. Servicio Completo - 39 €</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 15px; justify-content: center;">Solicitar Cita</button>
+            </form>
+            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 20px;">Sin pagos por adelantado. Confirmamos por WhatsApp.</p>
+        </div>
+    </div>
+
+    <!-- 2. Modal Carrito Dinámico -->
+    <div class="modal-overlay" id="modalCarrito">
+        <div class="modal-box cart-drawer">
+            <div>
+                <button class="modal-close-btn" onclick="cerrarModales()">&times;</button>
+                <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Tu Selección</span>
+                <h3 style="font-size: 2.2rem; margin: 10px 0 20px 0; font-weight: normal;">Carrito</h3>
+                
+                <div id="listaCarrito" style="max-height: 55vh; overflow-y: auto;">
+                    <p id="carritoVacio" style="color: var(--text-muted); text-align: center; padding: 40px 0;">Tu carrito está vacío.</p>
+                </div>
+            </div>
+
+            <div>
+                <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin: 20px 0; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                    <span>Total</span>
+                    <span id="carritoTotal">0 €</span>
+                </div>
+                <button class="btn-red" style="width: 100%; justify-content: center;" onclick="finalizarCompra()">Finalizar Compra &rarr;</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de Interactividad y Carrito de Compras -->
+    <script>
+        let carrito = [];
+
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+        function cerrarModales() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+        }
+
+        function agregarAlCarrito(nombre, precio) {
+            let productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            actualizarCarritoHTML();
+            abrirModal('modalCarrito');
+        }
+
+        function cambiarCantidad(nombre, cambio) {
+            let producto = carrito.find(item => item.nombre === nombre);
+            if (producto) {
+                producto.cantidad += cambio;
+                if (producto.cantidad <= 0) {
+                    carrito = carrito.filter(item => item.nombre !== nombre);
+                }
+            }
+            actualizarCarritoHTML();
+        }
+
+        function actualizarCarritoHTML() {
+            const contenedor = document.getElementById('listaCarrito');
+            const totalSpan = document.getElementById('carritoTotal');
+            
+            if (carrito.length === 0) {
+                contenedor.innerHTML = `<p style="color: var(--text-muted); text-align: center; padding: 40px 0;">Tu carrito está vacío.</p>`;
+                totalSpan.innerText = `0 €`;
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            carrito.forEach(item => {
+                total += item.precio * item.cantidad;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <h4 style="font-size: 1.05rem; margin-bottom: 3px;">${item.nombre}</h4>
+                            <span style="font-weight: bold; color: var(--bg-red);">${item.precio} €</span>
+                        </div>
+                        <div class="cart-controls">
+                            <button onclick="cambiarCantidad('${item.nombre}', -1)">-</button>
+                            <span>${item.cantidad}</span>
+                            <button onclick="cambiarCantidad('${item.nombre}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            contenedor.innerHTML = html;
+            totalSpan.innerText = `${total} €`;
+        }
+
+        function finalizarCompra() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío.');
+                return;
+            }
+            alert('¡Compra finalizada con éxito! Gracias por confiar en Soberano Distrito.');
+            carrito = [];
+            actualizarCarritoHTML();
+            cerrarModales();
+        }
+    </script>
+</body>
+</html>

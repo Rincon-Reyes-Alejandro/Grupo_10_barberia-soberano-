@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main class="light-section" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="modal-box" style="max-width: 600px; width: 100%; box-shadow: none; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Panel de Administración</span>
+            <h2 style="font-size: 2.2rem; margin: 10px 0 30px 0; font-weight: normal;">Editar Producto</h2>
+
+            <form action="/products/update?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label>Nombre del Producto (name)</label>
+                    <input type="text" name="name" value="Crema de Afeitado N·01" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción (description)</label>
+                    <input type="text" name="description" value="Espuma densa, deslizamiento suave y aroma a sándalo." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Imagen (image)</label>
+                    <input type="text" name="image" value="producto-crema.jpg" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Categoría (category)</label>
+                    <select name="category" required>
+                        <option value="afeitado" selected>Afeitado</option>
+                        <option value="barba">Barba</option>
+                        <option value="cabello">Cabello</option>
+                        <option value="herramientas">Herramientas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Colores / Tamaños</label>
+                    <input type="text" name="colors" value="Estándar">
+                </div>
+
+                <div class="form-group">
+                    <label>Precio (€)</label>
+                    <input type="number" name="price" value="10" required>
+                </div>
+
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 20px; justify-content: center;">Modificar Producto</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>
