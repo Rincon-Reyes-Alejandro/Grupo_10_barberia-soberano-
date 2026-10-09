@@ -6,10 +6,17 @@
             <small>Distrito Barber</small>
         </div>
     </div>
-    <nav>
+    <nav style="display: flex; align-items: center; gap: 25px;">
         <a href="/">Inicio</a>
         <a href="/#servicios">Servicios</a>
         <a href="/#tienda">Tienda</a>
         <a href="/login">Login</a>
+
+        <!-- Círculo del usuario con enlace directo al perfil -->
+        <a href="/profile" title="Mi Perfil" style="display: flex; align-items: center; text-decoration: none;">
+            <div style="width: 38px; height: 38px; border-radius: 50%; background-color: var(--bg-red); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+                AR
+            </div>
+        </a>
     </nav>
 </header>

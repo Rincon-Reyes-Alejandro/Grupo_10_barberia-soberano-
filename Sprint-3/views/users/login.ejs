@@ -12,20 +12,20 @@
             
             <div style="display: flex; gap: 20px; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
                 <span style="font-weight: bold; border-bottom: 2px solid var(--bg-red); padding-bottom: 11px;">INICIAR SESIÓN</span>
-                <a href="#" style="color: var(--text-muted); text-decoration: none;">REGÍSTRATE</a>
+                <a href="/register" style="color: var(--text-muted); text-decoration: none;">REGÍSTRATE</a>
             </div>
 
-            <form onsubmit="event.preventDefault(); alert('¡Inicio de sesión exitoso! Accediendo a historial de compras...'); window.location.href='/';">
+            <!-- Formulario conectado mediante POST para evaluar credenciales de Admin -->
+            <form action="/login" method="POST">
                 <div class="form-group">
-                    <label>Correo Electrónico</label>
-                    <input type="email" placeholder="tu@email.com" required>
+                    <label>Correo Electrónico / Usuario</label>
+                    <input type="text" name="email" placeholder="ej: admin o tu@email.com" required>
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" placeholder="Mínimo 8 caracteres" required>
+                    <input type="password" name="password" placeholder="Tu contraseña" required>
                 </div>
 
-                <!-- Opciones adicionales (Recuérdame y recuperar contraseña) -->
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 0.85rem;">
                     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-dark);">
                         <input type="checkbox" style="width: auto; margin: 0;"> Recuérdame
@@ -35,6 +35,7 @@
 
                 <button type="submit" class="btn-red" style="width: 100%; margin-top: 5px; justify-content: center;">Entrar</button>
             </form>
+            <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 15px;">*(Tip: Entra con usuario <b>admin</b> y contraseña <b>96385274</b> para ver los permisos de administrador)*</p>
         </div>
     </main>
 

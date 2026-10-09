@@ -62,12 +62,19 @@
         </div>
     </section>
 
-    <!-- ================= TIENDA (8 Productos con imágenes y botón Añadir) ================= -->
+    <!-- ================= TIENDA ================= -->
     <section id="tienda" class="light-section" style="padding-top: 0;">
         <span class="section-tag">La Tienda del Distrito</span>
-        <div class="section-header-flex">
-            <h2 class="section-title">El ritual <span>continúa en casa.</span></h2>
-            <p style="color: var(--text-muted); max-width: 350px;">Fórmulas honestas y herramientas elegidas por nuestros barberos. Lo que usamos, ahora también es tuyo.</p>
+        <div class="section-header-flex" style="align-items: flex-end;">
+            <div>
+                <h2 class="section-title">El ritual <span>continúa en casa.</span></h2>
+                <p style="color: var(--text-muted); max-width: 350px;">Fórmulas honestas y herramientas elegidas por nuestros barberos. Lo que usamos, ahora también es tuyo.</p>
+            </div>
+            <div>
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <a href="/products/create" class="btn-red" style="text-decoration: none; padding: 10px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">+ Nuevo Producto</a>
+                <% } %>
+            </div>
         </div>
 
         <div class="products-grid">
@@ -75,9 +82,7 @@
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-crema.jpg" alt="Crema de Afeitado" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Crema de Afeitado N·01', 10)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Crema de Afeitado N·01', 10)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Afeitado</span>
                 <div class="product-name-price">
@@ -85,15 +90,19 @@
                     <span>10 €</span>
                 </div>
                 <p class="product-desc">Espuma densa, deslizamiento suave y aroma a sándalo.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 2 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-navaja.jpg" alt="Navaja Distrito" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Navaja Distrito', 32)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Navaja Distrito', 32)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Herramientas</span>
                 <div class="product-name-price">
@@ -101,15 +110,19 @@
                     <span>32 €</span>
                 </div>
                 <p class="product-desc">Acero inoxidable y mango de madera natural.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 3 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-cuchillas.jpg" alt="Cuchillas Clásicas" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cuchillas Clásicas', 9)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cuchillas Clásicas', 9)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Afeitado</span>
                 <div class="product-name-price">
@@ -117,15 +130,19 @@
                     <span>9 €</span>
                 </div>
                 <p class="product-desc">Pack de 20 hojas de doble filo y corte preciso.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 4 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-gel.jpg" alt="Gel Fijador Mate" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Gel Fijador Mate', 18)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Gel Fijador Mate', 18)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Cabello</span>
                 <div class="product-name-price">
@@ -133,15 +150,19 @@
                     <span>18 €</span>
                 </div>
                 <p class="product-desc">Fijación media sin residuos ni efecto mojado.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 5 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-cera.jpg" alt="Cera Soberana" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cera Soberana', 19)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Cera Soberana', 19)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Cabello</span>
                 <div class="product-name-price">
@@ -149,15 +170,19 @@
                     <span>19 €</span>
                 </div>
                 <p class="product-desc">Textura flexible, acabado natural y control duradero.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 6 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-aceite.jpg" alt="Aceite de Barba" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Aceite de Barba N·03', 22)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Aceite de Barba N·03', 22)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Barba</span>
                 <div class="product-name-price">
@@ -165,15 +190,19 @@
                     <span>22 €</span>
                 </div>
                 <p class="product-desc">Argán, jojoba y cedro para nutrir sin engrasar.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 7 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-balsamo.jpg" alt="Bálsamo After Shave" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Bálsamo After Shave', 21)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Bálsamo After Shave', 21)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Afeitado</span>
                 <div class="product-name-price">
@@ -181,15 +210,19 @@
                     <span>21 €</span>
                 </div>
                 <p class="product-desc">Calma, hidrata y refresca después del afeitado.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
 
             <!-- Producto 8 -->
             <div class="product-card">
                 <div class="product-img">
                     <img src="/images/producto-kit.jpg" alt="Kit Ritual Completo" style="width:100%; height:100%; object-fit:cover;">
-                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Kit Ritual Completo', 58)">
-                        🛒 Añadir
-                    </button>
+                    <button class="btn-add-overlay" onclick="agregarAlCarrito('Kit Ritual Completo', 58)">🛒 Añadir</button>
                 </div>
                 <span class="product-category">Edición Especial</span>
                 <div class="product-name-price">
@@ -197,6 +230,12 @@
                     <span>58 €</span>
                 </div>
                 <p class="product-desc">Crema, aceite, cera y peine en estuche de regalo.</p>
+
+                <% if (typeof usuario !== 'undefined' && usuario.esAdmin) { %>
+                    <div style="margin-top: 12px; text-align: right;">
+                        <a href="/products/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar producto</a>
+                    </div>
+                <% } %>
             </div>
         </div>
     </section>
@@ -237,7 +276,7 @@
                         <span class="contact-label">Dirección</span>
                         <div class="contact-val">
                             Cra 17 #35-46 · C.C. San Gil Plaza<br>Local 322 · San Gil, Colombia · 684031
-                            <div><a href="#">Cómo llegar &rarr;</a></div>
+                            <div><a href="https://www.google.com/maps/search/san+gil+plaza/@6.5530446,-73.1524384,16.5z?entry=ttu&g_ep=EgoyMDI2MTAwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Cómo llegar &rarr;</a></div>
                         </div>
                     </div>
                     <div class="contact-item">
