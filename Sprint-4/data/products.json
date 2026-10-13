@@ -1,0 +1,113 @@
+[
+  {
+    "id": 1,
+    "name": "Crema de Afeitado N·01",
+    "description": "Espuma densa, deslizamiento suave y aroma a sándalo.",
+    "image": "producto-crema.jpg",
+    "category": "Afeitado",
+    "colors": [
+      "Blanco",
+      "Negro"
+    ],
+    "price": 10
+  },
+  {
+    "id": 2,
+    "name": "Navaja Distrito",
+    "description": "Acero inoxidable y mango de madera natural.",
+    "image": "producto-navaja.jpg",
+    "category": "Herramientas",
+    "colors": [
+      "Madera",
+      "Metal"
+    ],
+    "price": 32
+  },
+  {
+    "id": 3,
+    "name": "Cuchillas Clásicas",
+    "description": "Pack de 20 hojas de doble filo y corte preciso.",
+    "image": "producto-cuchillas.jpg",
+    "category": "Afeitado",
+    "colors": [
+      "Platino"
+    ],
+    "price": 9
+  },
+  {
+    "id": 4,
+    "name": "Gel Fijador Mate",
+    "description": "Fijación media sin residuos ni efecto mojado.",
+    "image": "producto-gel.jpg",
+    "category": "Cabello",
+    "colors": [
+      "Transparente"
+    ],
+    "price": 18
+  },
+  {
+    "id": 5,
+    "name": "Cera Soberana",
+    "description": "Textura flexible, acabado natural y control duradero.",
+    "image": "producto-cera.jpg",
+    "category": "Cabello",
+    "colors": [
+      "Ámbar"
+    ],
+    "price": 19
+  },
+  {
+    "id": 6,
+    "name": "Aceite de Barba N·03",
+    "description": "Argán, jojoba y cedro para nutrir sin engrasar.",
+    "price": 22,
+    "category": "Barba",
+    "image": "producto-aceite.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Bálsamo After Shave",
+    "description": "Calma, hidrata y refresca después del afeitado.",
+    "image": "producto-balsamo.jpg",
+    "category": "Afeitado",
+    "colors": [
+      "Blanco"
+    ],
+    "price": 21
+  },
+  {
+    "id": 8,
+    "name": "Kit Ritual Completo",
+    "description": "Crema, aceite, cera y peine en estuche de regalo.",
+    "image": "producto-kit.jpg",
+    "category": "Edición Especial",
+    "colors": [
+      "Negro / Madera"
+    ],
+    "price": 58
+  },
+  {
+    "id": 9,
+    "name": "intento 2",
+    "description": "prueba de edicción",
+    "price": 10,
+    "category": "Cabello",
+    "image": "producto-crema.jpg"
+  },
+  {
+    "id": 10,
+    "name": "intento 3",
+    "description": "sigo probando",
+    "price": 50,
+    "category": "Completo",
+    "image": "img-1791849826081-526073849.png"
+  },
+  {
+    "id": 11,
+    "name": "intento 4",
+    "description": "sigo aca",
+    "price": 98,
+    "category": "Imagen",
+    "image": "img-1791849776740-376676197.png"
+  }
+]

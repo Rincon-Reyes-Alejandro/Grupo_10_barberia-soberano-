@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+    <%- include('../partials/header') %>
+
+    <main class="light-section" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+        <div class="modal-box" style="max-width: 600px; width: 100%; box-shadow: none; border: 1px solid var(--border-color);">
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Panel de Administración</span>
+            <h2 style="font-size: 2.2rem; margin: 10px 0 30px 0; font-weight: normal;">Editar Producto</h2>
+
+            <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Nombre del Producto</label>
+                    <input type="text" name="name" value="<%= product.name %>" required>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea name="description" required><%= product.description %></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Precio (€)</label>
+                    <input type="number" name="price" value="<%= product.price %>" required>
+                </div>
+                <div class="form-group">
+                    <label>Categoría</label>
+                    <input type="text" name="category" value="<%= product.category %>" required>
+                </div>
+                <div class="form-group">
+                    <label>Imagen del Producto</label>
+                    <input type="file" name="image">
+                    <small style="color: gray;">Imagen actual: <%= product.image %></small>
+                </div>
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 15px;">Modificar Producto</button>
+            </form>
+
+            <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este producto?');" style="background: var(--bg-red); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">🗑️ Eliminar</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

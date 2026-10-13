@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "firstName": "Administrador",
+    "lastName": "Soberano",
+    "email": "admin",
+    "password": "96385274",
+    "category": "admin"
+  },
+  {
+    "id": 2,
+    "firstName": "Alejandro",
+    "lastName": "Rincón",
+    "email": "alejandro@email.com",
+    "password": "password123",
+    "category": "user"
+  },
+  {
+    "id": 3,
+    "firstName": "user ",
+    "lastName": "tres",
+    "email": "u3@gmail.com",
+    "password": "654654654",
+    "category": "user",
+    "phone": "3102222222",
+    "address": "Calle 5 #17-14"
+  }
+]
