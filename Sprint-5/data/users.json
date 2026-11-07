@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "firstName": "Administrador",
+    "lastName": "Soberano",
+    "email": "admin",
+    "password": "96385274",
+    "category": "admin"
+  },
+  {
+    "id": 2,
+    "firstName": "Alejandro",
+    "lastName": "Rincón",
+    "email": "alejandro@email.com",
+    "password": "password123",
+    "category": "user"
+  },
+  {
+    "id": 3,
+    "firstName": "user ",
+    "lastName": "tres",
+    "email": "u3@gmail.com",
+    "password": "654654654",
+    "category": "user",
+    "phone": "3102222222",
+    "address": "Calle 5 #17-14"
+  },
+  {
+    "id": 4,
+    "firstName": "user ",
+    "lastName": "cuatro",
+    "email": "u4@gmail.com",
+    "password": "$2b$10$YZp90Wzl9Zm9/kKwiyjvq.u36RjVmsejxXyUYcLlCuufiVXHpcTLu",
+    "image": "user-1794022677788.png",
+    "category": "user",
+    "phone": "8651681351",
+    "address": "Calle 5 #95-61"
+  },
+  {
+    "id": 5,
+    "firstName": "admin2",
+    "lastName": "prueba ",
+    "email": "ad@gmai.com",
+    "password": "$2b$10$U.oqXzUoRyBykIpL1gQ6K.c3569ShY3H0zuymfJBt4cIubHV2pSaa",
+    "image": "user-1794068154111.png",
+    "category": "admin",
+    "phone": "32563256",
+    "address": "calle 4 234-23"
+  },
+  {
+    "id": 6,
+    "firstName": "user ",
+    "lastName": "seis",
+    "email": "u6@gmail.com",
+    "password": "$2b$10$sDUzF01DId63KCkO12OTCuGmQqpa8.D1/dgavpDOOBzzM9fyltGGy",
+    "image": "default-user.png",
+    "category": "user",
+    "phone": "39996",
+    "address": ""
+  }
+]
