@@ -1,0 +1,29 @@
+<header>
+    <div class="logo-area">
+        <div class="logo-circle">S</div>
+        <div class="logo-text">
+            <span>Soberano</span>
+            <small>Distrito Barber</small>
+        </div>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 25px;">
+        <a href="/">Inicio</a>
+        <a href="/#servicios">Servicios</a>
+        <a href="/#tienda">Tienda</a>
+        <!-- Renderizado dinámico del usuario en el Header -->
+        <div style="display: flex; align-items: center;">
+            <% if (locals.usuarioLogueado) { %>
+                <!-- SI ESTÁ LOGUEADO: Oculta la palabra LOGIN y muestra su foto real -->
+                <a href="/profile" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #222; border: 2px solid #a94442; text-decoration: none; margin-left: 15px;">
+                    <img src="/images/users/<%= locals.usuarioLogueado.image %>" alt="Perfil" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+            <% } else { %>
+                <!-- SI ES INVITADO: Muestra la palabra LOGIN y la silueta por defecto -->
+                <a href="/login" style="color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-right: 15px;">LOGIN</a>
+                <a href="/login" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; background: #222; border: 2px solid #a94442; text-decoration: none;">
+                    <img src="/images/users/default-user.png" alt="Perfil Invitado" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+            <% } %>
+        </div>
+    </nav>
+</header>
