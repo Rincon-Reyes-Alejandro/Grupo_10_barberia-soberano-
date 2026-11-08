@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+
+    <main class="light-section" style="min-height: 80vh; padding: 40px 20px;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: normal;">Tu Carrito de Compras</h2>
+
+            <!-- Mensaje de éxito al comprar -->
+            <% if (typeof success !== 'undefined' && success === 'true') { %>
+                <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 4px; margin-bottom: 20px; border: 1px solid #c3e6cb;">
+                    ¡Compra realizada con éxito! Gracias por confiar en Soberano Distrito. Tu pedido está en camino.
+                </div>
+            <% } %>
+
+            <% if (cart && cart.products && cart.products.length > 0) { %>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border-color); text-align: left;">
+                            <th style="padding: 10px;">Producto</th>
+                            <th style="padding: 10px;">Precio</th>
+                            <th style="padding: 10px; text-align: center;">Cantidad</th>
+                            <th style="padding: 10px;">Subtotal</th>
+                            <th style="padding: 10px; text-align: center;">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cart.products.forEach(producto => { 
+                            const subtotal = producto.price * producto.quantity;
+                        %>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 15px 10px; display: flex; align-items: center; gap: 15px;">
+                                    <img src="/images/<%= producto.image %>" alt="<%= producto.name %>" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                                    <span><%= producto.name %></span>
+                                </td>
+                                <td style="padding: 15px 10px;"><%= producto.price.toFixed(2) %> €</td>
+                                
+                                <td style="padding: 15px 10px; text-align: center;">
+                                    <div style="display: inline-flex; align-items: center; gap: 8px;">
+                                        <!-- Botón Menos -->
+                                        <form action="/cart/update" method="POST" style="display:inline;">
+                                            <input type="hidden" name="productId" value="<%= producto.id %>">
+                                            <input type="hidden" name="action" value="decrease">
+                                            <button type="submit" style="background: #ddd; border: none; padding: 2px 8px; cursor: pointer; border-radius: 3px;">-</button>
+                                        </form>
+
+                                        <!-- Cantidad directa -->
+                                        <span style="font-weight: bold; min-width: 20px; display: inline-block;"><%= producto.quantity %></span>
+
+                                        <!-- Botón Más -->
+                                        <form action="/cart/update" method="POST" style="display:inline;">
+                                            <input type="hidden" name="productId" value="<%= producto.id %>">
+                                            <input type="hidden" name="action" value="increase">
+                                            <button type="submit" style="background: #ddd; border: none; padding: 2px 8px; cursor: pointer; border-radius: 3px;">+</button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                                <td style="padding: 15px 10px; font-weight: bold;">
+                                    <%= subtotal.toFixed(2) %> €
+                                </td>
+                                <td style="padding: 15px 10px; text-align: center;">
+                                    <!-- Botón Eliminar -->
+                                    <form action="/cart/update" method="POST" style="display:inline;">
+                                        <input type="hidden" name="productId" value="<%= producto.id %>">
+                                        <input type="hidden" name="action" value="delete">
+                                        <button type="submit" style="background: none; border: none; cursor: pointer; font-size: 1.1rem;" title="Eliminar producto">🗑️</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+
+                <div style="text-align: right; font-size: 1.5rem; margin-bottom: 20px;">
+                    Total: <strong><%= cart.total_price %> €</strong>
+                </div>
+                
+                <div style="text-align: right;">
+                    <!-- Botón Proceder al Pago -->
+                    <form action="/cart/checkout" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-red" style="padding: 10px 30px; font-size: 1.1rem; cursor: pointer; border: none; color: white;">Proceder al Pago</button>
+                    </form>
+                </div>
+            <% } else { %>
+                <div style="text-align: center; padding: 50px; background: #fff; border: 1px solid #eee;">
+                    <p style="font-size: 1.2rem; color: gray; margin-bottom: 20px;">Tu carrito está vacío.</p>
+                    <a href="/" class="btn-red" style="text-decoration: none; padding: 10px 20px; color: white;">Volver a la tienda</a>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

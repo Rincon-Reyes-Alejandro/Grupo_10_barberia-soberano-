@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <%- include('../partials/header') %>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <span class="hero-subtitle">Barbería de autor · Desde 2018</span>
+        <h1>Tu estilo. <span>Tu distrito.</span></h1>
+        <p>Cortes con carácter, rituales sin prisa y oficio de verdad. Entra como cliente. Sal como soberano.</p>
+        <div>
+            <button class="btn-red" onclick="abrirModal('modalReserva')">Reserva tu cita &rarr;</button>
+        </div>
+        <div class="hero-footer">
+            <span>San Gil · Santander · 684031</span>
+            <span>Mar — Sáb / 10:00 — 20:00</span>
+        </div>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="light-section">
+        <span class="section-tag">El Oficio</span>
+        <div class="section-header-flex">
+            <h2 class="section-title">Servicios <span>sin artificios.</span></h2>
+            <p style="color: var(--text-muted); max-width: 350px;">Menos tendencias pasajeras. Más técnica, criterio y atención al detalle.</p>
+        </div>
+
+        <div class="service-row">
+            <div class="service-info">
+                <h3>01. Corte Soberano</h3>
+                <p>Asesoría, corte a tijera o máquina, lavado y peinado.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">25 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div class="service-info">
+                <h3>02. Barba de Distrito</h3>
+                <p>Ritual de toalla caliente, perfilado y aceites esenciales.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">18 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+
+        <div class="service-row" style="border-bottom: 1px solid var(--border-color);">
+            <div class="service-info">
+                <h3>03. Servicio Completo</h3>
+                <p>Corte, barba y acabado premium. El ritual de la casa.</p>
+            </div>
+            <div class="service-action">
+                <span class="service-price">39 €</span>
+                <button class="arrow-btn" onclick="abrirModal('modalReserva')">&rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TIENDA ================= -->
+    <section id="tienda" class="light-section" style="padding-top: 0;">
+        <span class="section-tag">La Tienda del Distrito</span>
+        
+        <div class="section-header-flex" style="align-items: flex-end;">
+            <div>
+                <h2 class="section-title">El ritual <span>continúa en casa.</span></h2>
+                <p style="color: var(--text-muted); max-width: 350px;">Fórmulas honestas y herramientas elegidas por nuestros barberos. Lo que usamos, ahora también es tuyo.</p>
+            </div>
+            
+            <div>
+                <% if (locals.usuarioLogueado && locals.usuarioLogueado.esAdmin) { %>
+                    <a href="/products/create" class="btn-red" style="text-decoration: none; padding: 10px 20px; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                        + Nuevo Producto
+                    </a>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            <% if (typeof products !== 'undefined' && products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="/images/<%= product.image %>" alt="<%= product.name %>" style="width:100%; height:100%; object-fit:cover;">
+                            
+                            <!-- Formulario 100% oculto para la lógica de Node.js -->
+                            <form action="/cart/add" method="POST" id="add-form-<%= product.id %>" style="display: none;">
+                                <input type="hidden" name="productId" value="<%= product.id %>">
+                            </form>
+                            
+                            <!-- TU BOTÓN ORIGINAL CON LA CLASE CORRECTA (btn-add-overlay) -->
+                            <a href="#" class="btn-add-overlay" onclick="document.getElementById('add-form-<%= product.id %>').submit(); return false;">
+                                🛒 AÑADIR
+                            </a>
+                        </div>
+                        
+                        <span class="product-category"><%= product.category ? product.category.name : 'Sin categoría' %></span>
+                        <div class="product-name-price">
+                            <h4><%= product.name %></h4>
+                            <span><%= product.price %> €</span>
+                        </div>
+                        <p class="product-desc"><%= product.description %></p>
+
+                        <% if (locals.usuarioLogueado && locals.usuarioLogueado.esAdmin) { %>
+                            <div style="margin-top: 12px; display: flex; justify-content: flex-end; gap: 8px;">
+                                <a href="/products/<%= product.id %>/edit" style="font-size: 0.8rem; background-color: #333; color: #fff; padding: 5px 12px; border-radius: 4px; text-decoration: none;">⚙️ Editar</a>
+                                
+                                <form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:none;" id="delete-form-<%= product.id %>">
+                                </form>
+                                <button type="button" onclick="if(confirm('¿Estás seguro de eliminar este producto?')) document.getElementById('delete-form-<%= product.id %>').submit();" style="font-size: 0.8rem; background-color: var(--bg-red); color: white; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer;">
+                                    🗑️ Eliminar
+                                </button>
+                            </div>
+                        <% } %>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- ================= MANIFESTO ================= -->
+    <section id="manifiesto" class="dark-manifesto">
+        <div class="manifesto-img">
+            <span class="manifesto-img-tag">06 Años en el barrio</span>
+        </div>
+        <div class="manifesto-content">
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase; margin-bottom: 10px; display: block;">— El Manifiesto</span>
+            <h2>No cortamos pelo. <span>Construimos presencia.</span></h2>
+            <p>Somos una barbería de barrio con mentalidad de estudio. Escuchamos, proponemos y trabajamos cada detalle hasta que el corte habla por ti.</p>
+            <span style="font-size: 1.5rem; letter-spacing: 2px;">Soberano</span>
+        </div>
+    </section>
+
+    <!-- ================= CITA DEL CLIENTE ================= -->
+    <section class="red-quote-section">
+        <span style="font-size: 2rem;">“</span>
+        <h2>Por fin una barbería donde entienden lo que pides, pero también saben decirte lo que te queda mejor.</h2>
+        <small>— Marcos G. · Cliente desde 2019</small>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="light-section">
+        <span class="section-tag">Tu Próxima Parada</span>
+        <div class="contact-grid">
+            <div>
+                <h2 class="section-title">Ven al <span>distrito.</span></h2>
+                <div style="margin-top: 40px;">
+                    <button class="btn-red" onclick="abrirModal('modalReserva')">Reservar Ahora &rarr;</button>
+                </div>
+            </div>
+            <div>
+                <div class="contact-info-list">
+                    <div class="contact-item">
+                        <span class="contact-label">Dirección</span>
+                        <div class="contact-val">
+                            Cra 17 #35-46 · C.C. San Gil Plaza<br>Local 322 · San Gil, Colombia · 684031
+                            <div><a href="https://www.google.com/maps/search/san+gil+plaza/@6.5530446,-73.1524384,16.5z" target="_blank">Cómo llegar &rarr;</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Horario</span>
+                        <div class="contact-val">
+                            Martes — Viernes 10:00 — 20:00<br>Sábado 09:30 — 15:00
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Contacto</span>
+                        <div class="contact-val">+57 320 993 4019</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <%- include('../partials/footer') %>
+
+    <!-- ================= VENTANAS MODALES ================= -->
+
+    <!-- 1. Modal Reserva -->
+    <div class="modal-overlay" id="modalReserva">
+        <div class="modal-box">
+            <button class="modal-close-btn" onclick="cerrarModales()">&times;</button>
+            <span style="font-size: 0.75rem; letter-spacing: 2px; color: var(--bg-red); text-transform: uppercase;">— Reserva tu cita</span>
+            <h3 style="font-size: 2rem; margin: 10px 0 25px 0; font-weight: normal;">Hazte un hueco en el distrito.</h3>
+            <form onsubmit="event.preventDefault(); alert('¡Cita solicitada con éxito!'); cerrarModales();">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="name" value="<%= locals.usuarioLogueado ? locals.usuarioLogueado.nombre : '' %>" placeholder="Tu Nombre">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" name="phone" value="<%= locals.usuarioLogueado ? locals.usuarioLogueado.phone : '' %>" placeholder="Tu Teléfono">
+                </div>
+                <div class="form-group">
+                    <label>Servicio</label>
+                    <select required>
+                        <option value="" disabled selected>Selecciona un servicio</option>
+                        <option>01. Corte Soberano - 25 €</option>
+                        <option>02. Barba de Distrito - 18 €</option>
+                        <option>03. Servicio Completo - 39 €</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-red">
+                    Solicitar Cita
+                </button>
+            </form>
+            <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 20px;">Sin pagos por adelantado. Confirmamos por WhatsApp.</p>
+        </div>
+    </div>
+
+    <!-- 2. Modal Carrito Independiente -->
+    <div id="panelCarrito" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99999;">
+        <div style="position: absolute; top: 0; right: 0; width: 400px; height: 100%; background: #fdfbf7; padding: 30px; box-shadow: -5px 0 15px rgba(0,0,0,0.2); overflow-y: auto;">
+            
+            <button onclick="cerrarCarrito()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; font-weight: bold; color: #333;">&times;</button>
+            
+            <span style="color: #a94442; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px;">— Tu Selección</span>
+            <h2 style="font-size: 2rem; margin-top: 5px; margin-bottom: 30px; font-family: serif; color: #222;">Carrito</h2>
+            
+            <div id="listaCarrito" style="min-height: 200px;">
+                <p style="color: #666; text-align: center; padding: 40px 0;">Tu carrito está vacío.</p>
+            </div>
+            
+            <div style="border-top: 1px solid #ddd; margin-top: 20px; padding-top: 20px;">
+                <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; color: #222;">
+                    <span>Total</span>
+                    <span id="carritoTotal">0 €</span>
+                </div>
+                <button onclick="finalizarCompra()" style="width: 100%; background: #a94442; color: white; border: none; padding: 15px; font-weight: bold; text-transform: uppercase; cursor: pointer;">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        let carrito = [];
+
+        // --- FUNCIONES DE RESERVAS ---
+        function abrirModal(id) {
+            cerrarCarrito(); 
+            const modal = document.getElementById(id);
+            if (modal) modal.classList.add('active');
+        }
+        
+        function cerrarModales() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+        }
+
+        // --- FUNCIONES DEL CARRITO ---
+        function abrirCarrito() {
+            cerrarModales(); 
+            const panel = document.getElementById('panelCarrito');
+            if (panel) {
+                panel.style.display = 'block';
+                panel.style.visibility = 'visible';
+                panel.style.opacity = '1';
+            }
+        }
+
+        function cerrarCarrito() {
+            const panel = document.getElementById('panelCarrito');
+            if (panel) panel.style.display = 'none';
+        }
+
+        // --- LÓGICA DE LA TIENDA ---
+        function agregarAlCarrito(nombre, precio) {
+            let productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            actualizarCarritoHTML();
+            abrirCarrito();
+        }
+
+        function cambiarCantidad(nombre, cambio) {
+            let producto = carrito.find(item => item.nombre === nombre);
+            if (producto) {
+                producto.cantidad += cambio;
+                if (producto.cantidad <= 0) {
+                    carrito = carrito.filter(item => item.nombre !== nombre);
+                }
+            }
+            actualizarCarritoHTML();
+        }
+
+        function actualizarCarritoHTML() {
+            const contenedor = document.getElementById('listaCarrito');
+            const totalSpan = document.getElementById('carritoTotal');
+            
+            if (!contenedor || !totalSpan) return;
+            
+            if (carrito.length === 0) {
+                contenedor.innerHTML = `<p style="color: #666; text-align: center; padding: 40px 0;">Tu carrito está vacío.</p>`;
+                totalSpan.innerText = `0 €`;
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            carrito.forEach(item => {
+                total += item.precio * item.cantidad;
+                html += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                        <div>
+                            <h4 style="font-size: 1rem; margin: 0 0 5px 0; color: #222;">${item.nombre}</h4>
+                            <span style="font-weight: bold; color: #a94442;">${item.precio} €</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <button type="button" onclick="cambiarCantidad('${item.nombre}', -1)" style="background: #eee; border: 1px solid #ddd; padding: 3px 8px; cursor: pointer; font-weight: bold;">-</button>
+                            <span>${item.cantidad}</span>
+                            <button type="button" onclick="cambiarCantidad('${item.nombre}', 1)" style="background: #eee; border: 1px solid #ddd; padding: 3px 8px; cursor: pointer; font-weight: bold;">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            contenedor.innerHTML = html;
+            totalSpan.innerText = `${total} €`;
+        }
+
+        function finalizarCompra() {
+            if (carrito.length === 0) {
+                alert('El carrito está vacío.');
+                return;
+            }
+            alert('¡Compra finalizada con éxito! Gracias por confiar en nosotros.');
+            carrito = [];
+            actualizarCarritoHTML();
+            cerrarCarrito();
+        }
+    </script>
+</body>
+</html>
